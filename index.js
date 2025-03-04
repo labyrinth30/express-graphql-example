@@ -41,7 +41,7 @@ const server = new ApolloServer({
     typeDefs,
     resolvers,
     cors: {
-        origin: `${process.env.ORIGIN}`, // 허용할 출처
+        origin: '*', // 허용할 출처
         credentials: true // 자격 증명 허용 여부
     }
 });
