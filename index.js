@@ -42,7 +42,6 @@ const server = new ApolloServer({
     resolvers,
     cors: {
         origin: '*', // 허용할 출처
-        credentials: true // 자격 증명 허용 여부
     }
 });
 
