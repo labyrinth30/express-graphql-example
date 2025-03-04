@@ -48,7 +48,3 @@ const server = new ApolloServer({
 server.listen().then(({ url }) => {
     console.log(`🚀  Server ready at ${url}`);
 });
-
-server.get('/', (req, res) => {
-    res.send(`Hello World!`);
-});
