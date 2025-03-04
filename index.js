@@ -49,6 +49,6 @@ server.listen().then(({ url }) => {
     console.log(`🚀  Server ready at ${url}`);
 });
 
-app.get('/', (req, res) => {
+server.get('/', (req, res) => {
     res.send(`Hello World!`);
 });
