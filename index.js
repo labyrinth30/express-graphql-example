@@ -1,16 +1,16 @@
-const { ApolloServer } = require('apollo-server')
+const { ApolloServer } = require('apollo-server');
 
-const queries = require('./typedefs-resolvers/_queries')
-const mutations = require('./typedefs-resolvers/_mutations')
-const enums = require('./typedefs-resolvers/_enums')
-const teams = require('./typedefs-resolvers/teams')
-const people = require('./typedefs-resolvers/people')
-const roles = require('./typedefs-resolvers/roles')
-const equipments = require('./typedefs-resolvers/equipments')
-const softwares = require('./typedefs-resolvers/softwares')
-const supplies = require('./typedefs-resolvers/supplies')
-const tools = require('./typedefs-resolvers/tools')
-const givens = require('./typedefs-resolvers/givens')
+const queries = require('./typedefs-resolvers/_queries');
+const mutations = require('./typedefs-resolvers/_mutations');
+const enums = require('./typedefs-resolvers/_enums');
+const teams = require('./typedefs-resolvers/teams');
+const people = require('./typedefs-resolvers/people');
+const roles = require('./typedefs-resolvers/roles');
+const equipments = require('./typedefs-resolvers/equipments');
+const softwares = require('./typedefs-resolvers/softwares');
+const supplies = require('./typedefs-resolvers/supplies');
+const tools = require('./typedefs-resolvers/tools');
+const givens = require('./typedefs-resolvers/givens');
 
 const typeDefs = [
     queries,
@@ -23,8 +23,8 @@ const typeDefs = [
     softwares.typeDefs,
     supplies.typeDefs,
     tools.typeDefs,
-    givens.typeDefs
-]
+    givens.typeDefs,
+];
 
 const resolvers = [
     teams.resolvers,
@@ -34,11 +34,18 @@ const resolvers = [
     softwares.resolvers,
     supplies.resolvers,
     tools.resolvers,
-    givens.resolvers
-]
+    givens.resolvers,
+];
 
-const server =  new ApolloServer({typeDefs, resolvers})
+const server = new ApolloServer({
+    typeDefs,
+    resolvers,
+    cors: {
+        origin: `${process.env.ORIGIN}`, // 허용할 출처
+        credentials: true // 자격 증명 허용 여부
+    }
+});
 
-server.listen().then(({url}) => {
-    console.log(`🚀  Server ready at ${url}`)
-})
+server.listen().then(({ url }) => {
+    console.log(`🚀  Server ready at ${url}`);
+});
